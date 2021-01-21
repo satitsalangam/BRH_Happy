@@ -6,6 +6,7 @@ import 'package:brhhappy/happy_CounterCheckin/models/department.dart';
 import 'package:brhhappy/happy_CounterCheckin/models/locationMaps.dart';
 import 'package:brhhappy/happy_CounterCheckin/showBennerCounterCheckIN.dart';
 import 'package:brhhappy/happy_CounterCheckin/users/user_home.dart';
+import 'package:brhhappy/happy_countercheckin/users/bloc.navigation_bloc/navigation_bloc.dart';
 import 'package:brhhappy/ulility/my_constants_countercheckin.dart';
 import 'package:brhhappy/ulility/my_stayle.dart';
 import 'package:brhhappy/ulility/normal_dialog.dart';
@@ -13,13 +14,14 @@ import 'package:brhhappy/ulility/text_style.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:location/location.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class UserCheackIn extends StatefulWidget {
+class UserCheackIn extends StatefulWidget with NavigationStates {
   @override
   _UserCheackInState createState() => _UserCheackInState();
 }
@@ -321,68 +323,84 @@ class _UserCheackInState extends State<UserCheackIn> {
     return Scaffold(
       body: Stack(
         children: [
-          Container(
-            decoration: BoxDecoration(color: Colors.white10),
-            height: MediaQuery.of(context).size.height * 1,
-            width: MediaQuery.of(context).size.width * 1,
-            // padding: EdgeInsets.all(20.0),
-            child: ListView(
-              children: [
-                ShowBennerCounterCheckIN(size: size),
-                Padding(
-                  padding: const EdgeInsets.all(10),
-                  child: Column(
-                    children: [
-                      counterCheackin == null
-                          ? showTextloactionMap()
-                          : showTextloactionMap2(),
-                      SizedBox(
-                        height: 10.0,
-                      ),
-                      userlocationname == null
-                          ? showLocationMaps()
-                          : showUserlocationMap(),
-                      SizedBox(
-                        height: 10.0,
-                      ),
-                      counterCheackin == null ? showText() : showText2(),
-                      SizedBox(
-                        height: 10.0,
-                      ),
-                      userDepartment == null
-                          ? showDepartment()
-                          : status
-                              ? MyStyle().showProgress()
-                              : showUserdepartment(),
-                      Padding(
-                        padding: const EdgeInsets.only(right: 20.0, left: 20.0),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: <Widget>[
-                            showTraining(),
-                            showHelp(),
-                          ],
+          Center(
+            child: Padding(
+              padding: const EdgeInsets.only(left: 10),
+              child: Container(
+                decoration: BoxDecoration(color: Colors.white10),
+                height: MediaQuery.of(context).size.height * 1,
+                width: MediaQuery.of(context).size.width * 1,
+                // padding: EdgeInsets.all(20.0),
+                child: ListView(
+                  children: [
+                    Center(
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 10, bottom: 20),
+                        child: Text(
+                          'counter check in'.toUpperCase(),
+                          style: listtitleStyle,
                         ),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.all(1.0),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: [
-                            userDepartment != null
-                                ? showNull()
-                                : showCheackIn(context),
-                            userDepartment == null
-                                ? showCheackOut2(context)
-                                : showCheackOut(context)
-                          ],
-                        ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(10),
+                      child: Column(
+                        children: [
+                          counterCheackin == null
+                              ? showTextloactionMap()
+                              : showTextloactionMap2(),
+                          SizedBox(
+                            height: 10.0,
+                          ),
+                          userlocationname == null
+                              ? showLocationMaps()
+                              : showUserlocationMap(),
+                          SizedBox(
+                            height: 10.0,
+                          ),
+                          counterCheackin == null ? showText() : showText2(),
+                          SizedBox(
+                            height: 10.0,
+                          ),
+                          userDepartment == null
+                              ? showDepartment()
+                              : status
+                                  ? MyStyle().showProgress()
+                                  : showUserdepartment(),
+                          Padding(
+                            padding: const EdgeInsets.only(right: 20.0, left: 20.0),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: <Widget>[
+                                showTraining(),
+                                showHelp(),
+                              ],
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(1.0),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              children: [
+                                userDepartment != null
+                                    ? showNull()
+                                    : showCheackIn(context),
+                                userDepartment == null
+                                    ? showCheackOut2(context)
+                                    : showCheackOut(context)
+                              ],
+                            ),
+                          ),
+                          loadloaction ? MyStyle().showProgress() : Padding(
+                            padding: const EdgeInsets.only(top: 15),
+                            child: showNoContent(),
+                          ),
+                        ],
                       ),
-                      loadloaction ? MyStyle().showProgress() : showNoContent(),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
-              ],
+              ),
             ),
           ),
         ],
@@ -481,8 +499,8 @@ class _UserCheackInState extends State<UserCheackIn> {
           ),
           child: IconButton(
               icon: Icon(
-                Icons.location_on,
-                size: 40,
+                FontAwesomeIcons.streetView,
+                size: 30,
                 color: Colors.red,
               ),
               onPressed: () {
@@ -509,8 +527,8 @@ class _UserCheackInState extends State<UserCheackIn> {
           ),
           child: IconButton(
               icon: Icon(
-                Icons.location_on,
-                size: 40,
+                FontAwesomeIcons.streetView,
+                size: 30,
                 color: Colors.red,
               ),
               onPressed: () {
@@ -538,8 +556,8 @@ class _UserCheackInState extends State<UserCheackIn> {
           ),
           child: IconButton(
               icon: Icon(
-                Icons.location_on,
-                size: 40,
+                FontAwesomeIcons.streetView,
+                size: 30,
                 color: Colors.green,
               ),
               onPressed: () {
@@ -679,7 +697,7 @@ class _UserCheackInState extends State<UserCheackIn> {
                 return DropdownMenuItem(
                   child: Text(
                     list['ds_desc'],
-                    style: titleStyle,
+                    style: departmentStyle,
                   ),
                   value: list['ds_id'].toString(),
                 );
@@ -716,7 +734,7 @@ class _UserCheackInState extends State<UserCheackIn> {
     );
 
     return Container(
-      height: MediaQuery.of(context).size.height * 0.35,
+      height: MediaQuery.of(context).size.height * 0.45,
       child: GoogleMap(
         initialCameraPosition: cameraPosition,
         mapType: MapType.normal,

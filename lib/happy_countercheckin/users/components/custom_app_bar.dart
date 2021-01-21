@@ -28,7 +28,7 @@ class CounterCheckINAppBar extends StatelessWidget {
           padding: EdgeInsets.only(
               left: appPadding * 2,
               right: appPadding * 2,
-              top: appPadding * 2.8),
+              top: appPadding * 2.3),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -49,33 +49,12 @@ class CounterCheckINAppBar extends StatelessWidget {
               ),
               Stack(
                 children: [
-                  Icon(
-                    Icons.notifications,
-                    color: white,
-                    size: 25,
-                  ),
-                  Positioned(
-                    right: 0,
-                    top: 0,
-                    child: Container(
-                      width: size.width * 0.035,
-                      height: size.width * 0.035,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: black.withOpacity(0.8),
-                      ),
-                      child: Center(
-                        child: Text(
-                          '4',
-                          style: TextStyle(
-                            color: white,
-                            fontSize: 10,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ),
+                  Container(
+                    width: 35,
+                    child: Image(
+                      image: AssetImage('assets/images/logo.png'),
                     ),
-                  )
+                  ),
                 ],
               ),
             ],

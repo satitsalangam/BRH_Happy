@@ -27,23 +27,25 @@ final TextStyle headerStyle = GoogleFonts.pridi(
   letterSpacing: 3,
 );
 final TextStyle loginStyle = GoogleFonts.pridi(
-  fontSize: 18.0,
-  color: Colors.black54,
-  fontWeight: FontWeight.w600,
-  letterSpacing: 3
-);
+    fontSize: 18.0,
+    color: Colors.black54,
+    fontWeight: FontWeight.w600,
+    letterSpacing: 3);
+final TextStyle depart = GoogleFonts.pridi(
+    color: Color(0xFF1BB5FD),
+    fontSize: 12,
+    fontWeight: FontWeight.w600,
+    letterSpacing: 2);
 final TextStyle loginTextStyle = GoogleFonts.pridi(
-  fontSize: 18.0,
-  color: Colors.black,
-  fontWeight: FontWeight.w600,
-  letterSpacing: 3
-);
+    fontSize: 18.0,
+    color: Colors.black,
+    fontWeight: FontWeight.w600,
+    letterSpacing: 3);
 final TextStyle resetTextStyle = GoogleFonts.pridi(
-  fontSize: 18.0,
-  color: Colors.white54,
-  fontWeight: FontWeight.w600,
-  letterSpacing: 3
-);
+    fontSize: 18.0,
+    color: Colors.white54,
+    fontWeight: FontWeight.w600,
+    letterSpacing: 3);
 final TextStyle doctorTextStyle = GoogleFonts.pridi(
   fontSize: 24.0,
   color: Colors.black,
@@ -62,6 +64,7 @@ final TextStyle titledepartmentTextStyle = GoogleFonts.pridi(
   fontWeight: FontWeight.w700,
   letterSpacing: 1.4,
 );
+
 final TextStyle menuStyle = GoogleFonts.pridi(
   fontSize: 20.0,
   color: Colors.white,
@@ -76,13 +79,19 @@ final TextStyle listtitleStyle = GoogleFonts.pridi(
 );
 final TextStyle titleStyle = GoogleFonts.pridi(
   fontSize: 16.0,
- color: Colors.black54,
+  color: Colors.black54,
   fontWeight: FontWeight.w600,
   letterSpacing: 3,
 );
+final TextStyle inputStyle = GoogleFonts.pridi(
+  fontSize: 16.0,
+  color: Colors.black,
+  // fontWeight: FontWeight.w600,
+  letterSpacing: 1.5,
+);
 final TextStyle titleNameStyle = GoogleFonts.pridi(
   fontSize: 16.0,
- color: Colors.white60,
+  color: Colors.white60,
   fontWeight: FontWeight.w600,
   letterSpacing: 3,
 );
@@ -174,10 +183,10 @@ final TextStyle statusStyle = GoogleFonts.pridi(
 final TextStyle txt_style = GoogleFonts.pridi(
   fontSize: 10.0,
   color: Colors.white,
-  fontWeight: FontWeight.w800,
-  letterSpacing: 5,
+  fontWeight: FontWeight.w300,
+  letterSpacing: 2,
 );
-buildTextTitleVariation1(String text){
+buildTextTitleVariation1(String text) {
   return Padding(
     padding: EdgeInsets.only(bottom: 8),
     child: Text(
@@ -191,7 +200,7 @@ buildTextTitleVariation1(String text){
   );
 }
 
-buildTextTitleVariation2(String text, bool opacity){
+buildTextTitleVariation2(String text, bool opacity) {
   return Padding(
     padding: EdgeInsets.only(bottom: 16),
     child: Text(
@@ -205,7 +214,7 @@ buildTextTitleVariation2(String text, bool opacity){
   );
 }
 
-buildTextSubTitleVariation1(String text){
+buildTextSubTitleVariation1(String text) {
   return Padding(
     padding: EdgeInsets.only(bottom: 8),
     child: Text(
@@ -219,7 +228,7 @@ buildTextSubTitleVariation1(String text){
   );
 }
 
-buildTextSubTitleVariation2(String text){
+buildTextSubTitleVariation2(String text) {
   return Padding(
     padding: EdgeInsets.only(bottom: 8),
     child: Text(
@@ -233,7 +242,7 @@ buildTextSubTitleVariation2(String text){
   );
 }
 
-buildRecipeTitle(String text){
+buildRecipeTitle(String text) {
   return Padding(
     padding: EdgeInsets.only(bottom: 8),
     child: Text(
@@ -247,7 +256,7 @@ buildRecipeTitle(String text){
   );
 }
 
-buildRecipeSubTitle(String text){
+buildRecipeSubTitle(String text) {
   return Padding(
     padding: EdgeInsets.only(bottom: 16),
     child: Text(
@@ -260,7 +269,7 @@ buildRecipeSubTitle(String text){
   );
 }
 
-buildCalories(String text){
+buildCalories(String text) {
   return Text(
     text,
     style: TextStyle(

@@ -13,7 +13,7 @@ class RadialProgress extends StatefulWidget {
         @required this.child,
         this.goalCompleted = 0.7,
         this.progressColor = Colors.blue,
-        this.progressBackgroundColor = Colors.white,
+        this.progressBackgroundColor = Colors.blueGrey,
         this.width = 8})
       : super(key: key);
 

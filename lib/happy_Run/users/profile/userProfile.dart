@@ -90,34 +90,34 @@ class _MyUserProfileState extends State<MyUserProfile> {
                               : AssetImage('assets/images/avatarWomen.png'),
                     ),
                   ),
-                  Positioned(
-                    right: 0,
-                    bottom: 0,
-                    child: SizedBox(
-                      height: 35,
-                      width: 35,
-                      child: FlatButton(
-                        padding: EdgeInsets.zero,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(50),
-                          side: BorderSide(color: Colors.white),
-                        ),
-                        color: Colors.white54,
-                        onPressed: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => CameraProfile(),
-                              ));
-                        },
-                        child: Icon(
-                          Icons.camera,
-                          color: Colors.lightBlue,
-                          size: 25,
-                        ),
-                      ),
-                    ),
-                  ),
+                  // Positioned(
+                  //   right: 0,
+                  //   bottom: 0,
+                  //   child: SizedBox(
+                  //     height: 35,
+                  //     width: 35,
+                  //     child: FlatButton(
+                  //       padding: EdgeInsets.zero,
+                  //       shape: RoundedRectangleBorder(
+                  //         borderRadius: BorderRadius.circular(50),
+                  //         side: BorderSide(color: Colors.white),
+                  //       ),
+                  //       color: Colors.white54,
+                  //       onPressed: () {
+                  //         Navigator.push(
+                  //             context,
+                  //             MaterialPageRoute(
+                  //               builder: (context) => CameraProfile(),
+                  //             ));
+                  //       },
+                  //       child: Icon(
+                  //         Icons.camera,
+                  //         color: Colors.lightBlue,
+                  //         size: 25,
+                  //       ),
+                  //     ),
+                  //   ),
+                  // ),
                 ],
               ),
             ),          

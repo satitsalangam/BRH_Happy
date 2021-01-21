@@ -42,8 +42,8 @@ class _LoginCredentialsState extends State<LoginCredentials> {
   void initState() {
     super.initState();
     // totalmoney();
-    // usertype = 'user';
-    usertype = 'doctor';
+    usertype = 'user';
+    //usertype = 'doctor';
     usercheckLogin();
     SystemChrome.setPreferredOrientations(
         [DeviceOrientation.portraitDown, DeviceOrientation.portraitUp]);
@@ -75,6 +75,7 @@ class _LoginCredentialsState extends State<LoginCredentials> {
   }
 
   Future<void> doctorcheckAuthen() async {
+    print('usertype>>>$usertype');
     print('doctorid>>$username');
     print('doctorpass>>$password');
     String url =
@@ -85,13 +86,23 @@ class _LoginCredentialsState extends State<LoginCredentials> {
       print('result>>$result');
       for (var map in result) {
         UserDoctor userDoctor = UserDoctor.fromJson(map);
-        setState(() {
-          showProcessingDiglog(context);
-          doctorToService(DoctorScreen(), userDoctor);
-        });
+
+        if (usertype != null || usertype.isNotEmpty) {
+          if (usertype == 'doctor') {
+            showProcessingDiglog(context);
+            doctorToService(DoctorScreen(), userDoctor);
+          } else {
+            normalDialog(context, 'ไม่มีข้อมูลของผู้ใช้งาน');
+          }
+        }
+        // setState(() {
+        //   showProcessingDiglog(context);
+        //   doctorToService(DoctorScreen(), userDoctor);
+        // });
       }
     } catch (e) {
-      normalDialog(context, 'ชื่อผู้ใช้งาน หรือ รหัสผ่าน ไม่ถูกต้อง');
+      normalDialog(context,
+          'ชื่อผู้ใช้งาน หรือ รหัสผ่าน ไม่ถูกต้อง\nกรุณาลองใหม่อีกครั้ง');
     }
   }
 
@@ -107,20 +118,20 @@ class _LoginCredentialsState extends State<LoginCredentials> {
       print('result>>>>>>>>$result');
       for (var map in result) {
         Usermodel usermodel = Usermodel.fromJson(map);
-        String empdepthod1 = usermodel.depthod1;
+        String usertype = usermodel.empStatus;
 
-        if (empdepthod1 != null || empdepthod1.isNotEmpty) {
-          if (empdepthod1 == 'user') {
+        if (usertype != null || usertype.isNotEmpty) {
+          if (usertype == 'employee' || usertype == 'hod') {
             showProcessingDiglog(context);
             routeToService(UserScreen(), usermodel);
           } else {
-            // showProcessingDiglog(context);
-            // routeToService(ManagerHomePage(), usermodel);
+            normalDialog(context, 'ไม่มีข้อมูลของผู้ใช้งาน');
           }
         }
       }
     } catch (e) {
-      normalDialog(context, 'ชื่อผู้ใช้งาน หรือ รหัสผ่าน ไม่ถูกต้อง');
+      normalDialog(context,
+          'ชื่อผู้ใช้งาน หรือ รหัสผ่าน ไม่ถูกต้อง\nกรุณาลองเชื่อมต่อใหม่อีกครั้ง');
     }
   }
 
@@ -155,7 +166,8 @@ class _LoginCredentialsState extends State<LoginCredentials> {
         }
       }
     } catch (e) {
-      normalDialog(context, 'ชื่อผู้ใช้งาน หรือ รหัสผ่าน ไม่ถูกต้อง');
+      normalDialog(context,
+          'ชื่อผู้ใช้งาน หรือ รหัสผ่าน ไม่ถูกต้อง\nกรุณาลองเชื่อมต่อใหม่อีกครั้ง');
     }
   }
 
@@ -192,6 +204,7 @@ class _LoginCredentialsState extends State<LoginCredentials> {
     preferences.setString('usertype', userModels.empStatus);
     preferences.setString('prename', userModels.empPnameTh);
     preferences.setString('fullname', userModels.empPnamefullTh);
+    preferences.setString('img', userModels.empImg);
     MaterialPageRoute route = MaterialPageRoute(
       builder: (context) => myWidget,
     );
@@ -265,9 +278,9 @@ class _LoginCredentialsState extends State<LoginCredentials> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              // showUser(),
+              showUser(),
               showDoctor(),
-              showAdmin()
+              //showAdmin()
             ],
           ),
           SizedBox(

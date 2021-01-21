@@ -1,12 +1,15 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.bangkokrayong.brhhappy">
+
     <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+
    <application
         android:label="BRH Happy"
         android:usesCleartextTraffic="true"
-        android:icon="@mipmap/ic_launcher">
+        android:icon="@mipmap/ic_launcher"> 
         <meta-data android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyB3BLg5zg7TkLP50yb-XbfNFmo1IAWteNg"/>
+            android:value="AIzaSyAqkDLgyGOZzKyjoORvbyHfvfJZjKztq7E"/>
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"

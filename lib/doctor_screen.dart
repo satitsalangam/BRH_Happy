@@ -37,7 +37,7 @@ class _DoctorScreenState extends State<DoctorScreen> {
   @override
   void initState() {
     super.initState();
-    
+
     readData();
     readDepartment();
   }
@@ -138,8 +138,7 @@ class _DoctorScreenState extends State<DoctorScreen> {
                   children: [
                     Container(
                       width: size.width * 1,
-                      padding:
-                          EdgeInsets.only(bottom: 110),
+                      padding: EdgeInsets.only(bottom: 110),
                       height: size.height * 0.25 - 10,
                       decoration: BoxDecoration(
                         color: kTextColor,
@@ -153,7 +152,7 @@ class _DoctorScreenState extends State<DoctorScreen> {
                           loadUsers
                               ? MyStyle().showProgress()
                               : Container(
-                                  width: size.width * 1,                           
+                                  width: size.width * 1,
                                   child: Padding(
                                     padding: const EdgeInsets.only(left: 10),
                                     child: Text(
@@ -170,18 +169,6 @@ class _DoctorScreenState extends State<DoctorScreen> {
                       padding: const EdgeInsets.only(top: 80),
                       child: Center(
                         child: ProfilePicture(),
-                        // child: RadialProgress(
-                        //   child: image == null
-                        //       ? AssetPhoto(
-                        //           imagePath: 'assets/images/BDMS.png',
-                        //           size: Size.fromWidth(100.0),
-                        //         )
-                        //       : NetworkPhoto(
-                        //           imagePath:
-                        //               '${MyConstantWeb().domain}GoodDoctor/$image',
-                        //           size: Size.fromWidth(100.0),
-                        //         ),
-                        // ),
                       ),
                     ),
                   ],

@@ -1,5 +1,6 @@
 import 'package:brhhappy/ulility/constants.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class BottomIcons extends StatefulWidget {
   final Function onPressed;
@@ -46,11 +47,11 @@ class _BottomIconsState extends State<BottomIcons> {
                     height: size.height * 0.015,
                   ),
                   Text(
-                    widget.text,
-                    style: TextStyle(
+                    widget.text.toUpperCase(),
+                    style: GoogleFonts.pridi(
                       color: white,
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
+                      fontSize: 13,
+                      // fontWeight: FontWeight.bold,
                     ),
                   ),
                   SizedBox(
@@ -77,10 +78,10 @@ class _BottomIconsState extends State<BottomIcons> {
                     height: size.height * 0.015,
                   ),
                   Text(
-                    widget.text,
-                    style: TextStyle(
+                    widget.text.toUpperCase(),
+                    style: GoogleFonts.pridi(
                       color: white.withOpacity(0.4),
-                      fontSize: 16,
+                      fontSize: 13,
 
                     ),
                   ),

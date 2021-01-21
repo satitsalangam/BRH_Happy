@@ -5,7 +5,7 @@ import 'package:brhhappy/happy_CounterCheckin/models/employeeCode.dart';
 import 'package:brhhappy/happy_CounterCheckin/showBennerCounterCheckIN.dart';
 import 'package:brhhappy/happy_CounterCheckin/users/historyCheckin/userchckINmap.dart';
 import 'package:brhhappy/happy_CounterCheckin/users/historyCheckin/usercheckOUTmap.dart';
-import 'package:brhhappy/ulility/constants.dart';
+import 'package:brhhappy/happy_countercheckin/users/bloc.navigation_bloc/navigation_bloc.dart';
 import 'package:brhhappy/ulility/my_constants_countercheckin.dart';
 import 'package:brhhappy/ulility/my_constants_happyrun.dart';
 import 'package:brhhappy/ulility/my_stayle.dart';
@@ -19,7 +19,7 @@ import 'package:intl/intl.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class UserHistoryCheckList extends StatefulWidget {
+class UserHistoryCheckList extends StatefulWidget with NavigationStates{
   @override
   _UserHistoryCheckListState createState() => _UserHistoryCheckListState();
 }
@@ -143,50 +143,62 @@ class _UserHistoryCheckListState extends State<UserHistoryCheckList> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
-      body: Column(
-        children: <Widget>[
-          ShowBennerCounterCheckIN(size: size),
-          Padding(
-            padding: const EdgeInsets.all(15.0),
-            child: loadUsers ? MyStyle().showProgress() : showTitle(context),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(16),
-            child: Row(
-              children: <Widget>[
-                Text(
-                  "ประวัติรายการทั้งหมด",
-                  style: textStyle.copyWith(
-                      color: Colors.black, fontWeight: FontWeight.bold),
+      body: Padding(
+        padding: const EdgeInsets.only(top: 50,left: 10),
+        child: Column(
+          children: <Widget>[
+            //ShowBennerCounterCheckIN(size: size),
+             Center(
+              child: Padding(
+                padding: const EdgeInsets.only(top:10,bottom: 20),
+                child: Text(
+                  'counter check in'.toUpperCase(),
+                  style: listtitleStyle,
                 ),
-                SizedBox(
-                  width: 20,
-                ),
-                Container(
-                  width: 25,
-                  height: 25,
-                  decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: Colors.red.withOpacity(0.5)),
-                  child: Center(
-                    child: Text(
-                      "${counterCheackin.length}",
-                      style: textStyle,
-                      textAlign: TextAlign.center,
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 40),
+              child: loadUsers ? MyStyle().showProgress() : showTitle(context),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(16),
+              child: Row(
+                children: <Widget>[
+                  Text(
+                    "ประวัติรายการทั้งหมด",
+                    style: textStyle.copyWith(
+                        color: Colors.black, fontWeight: FontWeight.bold),
+                  ),
+                  SizedBox(
+                    width: 20,
+                  ),
+                  Container(
+                    width: 25,
+                    height: 25,
+                    decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: Colors.red.withOpacity(0.5)),
+                    child: Center(
+                      child: Text(
+                        "${counterCheackin.length}",
+                        style: textStyle,
+                        textAlign: TextAlign.center,
+                      ),
                     ),
                   ),
-                ),
-                Spacer(),
-                Text(
-                  "NEW",
-                  style: GoogleFonts.pridi(fontSize: 12, color: Colors.green),
-                ),
-              ],
+                  Spacer(),
+                  Text(
+                    "NEW",
+                    style: GoogleFonts.pridi(fontSize: 12, color: Colors.green),
+                  ),
+                ],
+              ),
             ),
-          ),
-          Expanded(
-              child: loadStatus ? MyStyle().showProgress() : showNoContent()),
-        ],
+            Expanded(
+                child: loadStatus ? MyStyle().showProgress() : showNoContent()),
+          ],
+        ),
       ),
     );
   }
@@ -196,7 +208,7 @@ class _UserHistoryCheckListState extends State<UserHistoryCheckList> {
         ? showContet()
         : Center(
             child: Text(
-              'ยังไม่มีรายการการฝากเงิน',
+              'ยังไม่มีประวัติการช่วยเหลืองาน',
               style: GoogleFonts.prompt(
                   fontSize: 15.0, fontWeight: FontWeight.bold),
             ),

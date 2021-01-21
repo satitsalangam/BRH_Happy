@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
 import 'package:brhhappy/happy_CounterCheckin/models/employeeCode.dart';
+import 'package:brhhappy/happy_countercheckin/models/ratting.dart';
 import 'package:brhhappy/ulility/asset_image.dart';
 import 'package:brhhappy/ulility/my_constants_countercheckin.dart';
 import 'package:brhhappy/ulility/my_constants_happyrun.dart';
@@ -18,14 +19,19 @@ class ProfilePicture extends StatefulWidget {
 
 class _ProfilePictureState extends State<ProfilePicture> {
   bool loadStatus = true;
+  
   EmployeeCode employeeCode;
+  RattingCheckIn rattingCheckIn;
   String image;
   File file;
   @override
   void initState() {
     super.initState();
     readData();
+   
   }
+
+  
 
   Future<void> readData() async {
     SharedPreferences preferences = await SharedPreferences.getInstance();

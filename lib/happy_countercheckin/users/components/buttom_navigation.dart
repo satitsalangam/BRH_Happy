@@ -45,24 +45,24 @@ class _CounterCheckinNavigationState extends State<CounterCheckinNavigation> {
             icons: FontAwesomeIcons.mapMarkedAlt,
             text: "CheckIN",
           ),
-          BottomIcons(
-            onPressed: () {
-              setState(() {
-                bottomNavigationbarItemIndex = 1;
-                bottomNavigationbarItemIndex == 1
-                    ? Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => MyDoctorSchedule(),
-                        ),
-                      )
-                    : null;
-              });
-            },
-            isSelected: bottomNavigationbarItemIndex == 1 ? true : false,
-            icons: FontAwesomeIcons.calendarAlt,
-            text: "Calendar",
-          ),
+          // BottomIcons(
+          //   onPressed: () {
+          //     setState(() {
+          //       bottomNavigationbarItemIndex = 1;
+          //       bottomNavigationbarItemIndex == 1
+          //           ? Navigator.push(
+          //               context,
+          //               MaterialPageRoute(
+          //                 builder: (context) => MyDoctorSchedule(),
+          //               ),
+          //             )
+          //           : null;
+          //     });
+          //   },
+          //   isSelected: bottomNavigationbarItemIndex == 1 ? true : false,
+          //   icons: FontAwesomeIcons.calendarAlt,
+          //   text: "Calendar",
+          // ),
           BottomIcons(
             onPressed: () {
               setState(() {

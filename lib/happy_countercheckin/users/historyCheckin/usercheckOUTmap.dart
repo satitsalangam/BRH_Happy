@@ -89,14 +89,17 @@ class _UserOutLoactionMapsState extends State<UserOutLoactionMaps> {
       zoom: 17.0,
     );
 
-    return Container(
-      height: MediaQuery.of(context).size.height * 0.85,
-      child: GoogleMap(
-        initialCameraPosition: cameraPosition,
-        mapType: MapType.normal,
-        onMapCreated: (controller) {},
-        markers: myMarker(),
-        circles: circles,
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Container(
+        height: MediaQuery.of(context).size.height * 0.85,
+        child: GoogleMap(
+          initialCameraPosition: cameraPosition,
+          mapType: MapType.normal,
+          onMapCreated: (controller) {},
+          markers: myMarker(),
+          circles: circles,
+        ),
       ),
     );
   }
